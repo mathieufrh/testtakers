@@ -97,11 +97,11 @@ A generic controller can be implemented to handle every GET, POST, PUT, DELETE..
 
 #### testtakers lists
 
-![list](https://imgur.com/06Lyn7z "list")
+![list](https://i.imgur.com/06Lyn7z.png "list")
 
 #### testtaker details
 
-![details](https://imgur.com/S66iyLG "details")
+![details](https://i.imgur.com/S66iyLG.png "details")
 
 ## Docker
 
