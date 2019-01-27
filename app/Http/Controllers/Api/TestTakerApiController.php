@@ -49,6 +49,9 @@ class TestTakerApiController extends Controller
      */
     public function fetchResourceCollection(Request $request)
     {
+        // Uncomment me if you want to restrict access to these resources
+        // $this->authorize('fetch', $this->model);
+
         return filter(new TestTakerResourcesCollection($this->model->all()));
     }
 
@@ -61,6 +64,9 @@ class TestTakerApiController extends Controller
      */
     public function fetchResource($login, Request $request)
     {
+        // Uncomment me if you want to restrict access to this resource
+        // $this->authorize('fetch', $this->model);
+
         return new TestTakerResource($this->model->all()->where('login', $login)->first());
     }
 }

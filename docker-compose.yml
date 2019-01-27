@@ -37,7 +37,7 @@ services:
     networks:
       - main
     ports:
-      - 8080:443
+      - 8080:80
     tty: true
     stdin_open: true
     working_dir: /var/www/testtaker

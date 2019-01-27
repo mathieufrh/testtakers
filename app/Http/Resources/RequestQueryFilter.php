@@ -56,10 +56,10 @@ class RequestQueryFilter
 
         foreach ($attributes as $attribute) {
             if ($this->request->has($attribute)) {
-                $this->filterAttributeMatch($attribute);
+                $this->filterAttributeMatches($attribute);
             }
             if ($this->request->has($attribute . '!')) {
-                $this->filterAttributeDontMatches($attribute);
+                $this->filterAttributeDoesNotMatche($attribute);
             }
             if ($this->request->has($attribute . '^')) {
                 $this->filterAttributeStartsWith($attribute);
@@ -94,7 +94,7 @@ class RequestQueryFilter
      * @param  string $attribute;
      * @return void;
      */
-    protected function filterAttributeDontMatches(string $attribute)
+    protected function filterAttributeDoesNotMatche(string $attribute)
     {
         $this->resources = $this->resources->where($attribute, '!=', $this->request->get($attribute . '!'));
     }
