@@ -56,7 +56,7 @@ class ApiController extends Controller
 
 The example QueryBuilder class is `/Users/shllghst/git/testtaker/app/Http/QueryBuilders/QueryBuilder.php and looks a bit messy as I don't have time to clean it up but it gives an idea of a fully generic imlementation for an API that can handles any kind of requests and return standardized JSON responses. The logic lies in the model where you set the attributes, relationships, custome appendable attrbiutes etc... This way, you'll never have to create a new filtering method for any of your new models, it already exists and works!
 
-## Project scope considerations
+## Project scope considerations
 
 As per the rules of this exercice I have to modified the way of the API should works:
 
