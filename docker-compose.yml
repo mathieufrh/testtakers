@@ -1,0 +1,50 @@
+version: '2'
+
+services:
+  mysql:
+    build: ./docker/mysql
+    restart: always
+    volumes:
+      - ${DB_PATH}:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    networks:
+      - main
+    ports:
+      - 3380:3306
+
+  php:
+    build:
+      context: ./docker/php
+      args:
+        - HTTP_PROXY=${PROXY}
+        - http_proxy=${PROXY}
+        - HTTPS_PROXY=${PROXY}
+        - https_proxy=${PROXY}
+    restart: always
+    volumes:
+      - .:/var/www/testtaker
+    environment:
+      - http_proxy=${PROXY}
+      - https_proxy=${PROXY}
+      - HTTP_PROXY=${PROXY}
+      - HTTPS_PROXY=${PROXY}
+    depends_on:
+      - mysql
+    networks:
+      - main
+    ports:
+      - 8080:443
+    tty: true
+    stdin_open: true
+    working_dir: /var/www/testtaker
+
+networks:
+  main:
+    ipam:
+      config:
+        - subnet: 192.168.80.0/24
+          gateway: 192.168.80.1
